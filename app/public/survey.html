@@ -3,10 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="text/css" href="/app/public/assets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/cedf338da3.js"></script>
+    <title>Friend Finder Survey</title>
 </head>
 <body>
-    Survey Page
+    <div class="jumbotron">
+        <h1>Friend Finder</h1>
+        <p>Take our survey that utilizes Friend Finder's patented algorithm to match you with your other match made in haven!</p>
+    </div>
+    
+    <div>
+        <form method="POST" role="form">
+            <div class="form-group">
+                <label for="name">Please enter your name.</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+
+            <div class="form-group">
+                <label for="image">Please enter a link to image for your profile image.</label>
+                <input type="text" class="form-control" id="image">
+            </div>
+
+            <div class="form-group" id="survery_questions">
+
+            </div>
+
+        </form>
+    </div>
+    <script type="text/javascript">
+        //Function to get questions from server
+
+        //Load survery questions
+        console.log("Loaded");
+        window.addEventListener("load", function(){
+            console.log("Fill question array here");
+        });
+    </script>
 </body>
 </html>

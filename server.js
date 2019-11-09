@@ -1,30 +1,35 @@
 const express = require("express");
 const path = require("path");
+const data = require("./app/data/friends.js")
+const routing = require("./app/routing/htmlRoutes.js")
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/:directory", function(req, res) {
-    let directory = req.params.directory;
-    switch (directory){
-        case "home":
-        case "home.html":
-            res.sendFile(path.join(__dirname, "/app/public/home.html"));
-            break;
-        case "survey":
-        case "survey.html":
-            res.sendFile(path.join(__dirname, "/app/public/survey.html"));
-        default:
-            res.sendFile(path.join(__dirname, "/app/public/home.html"));
-    }
+printData();
+
+function printData(){
+    console.log(data.friends);
+}
+
+//Set the public folder
+app.use(express.static("app/public"));
+
+app.get("/", function(req, res) {
+    let directory = routing.routing(req.params.directory);
+    res.sendFile(path.join(__dirname, directory));
 });
 
-app.get("/survey")
+app.get("/:directory", function(req, res) {
+    let directory = routing.routing(req.params.directory);
+    res.sendFile(path.join(__dirname, directory));
+});
 
 app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
   });
   
