@@ -122,10 +122,51 @@ function showBestestFriends(friendData){
         )
 
         let contactButton = $("<button>")
-        contactButton.addClass("btn btn-warning").attr({"type":"button","id":"contact_"+friendData[i].name}).html("Message")
-
+        contactButton.addClass("btn btn-warning").attr({"type":"button","id":"contact_"+friendData[i].name,"data-toggle":"modal","data-target":"#"+friendData[i].name+"Modal"}).html("Message")
         cardDiv.append(cardImg, bodyDiv, contactButton);
         cardDeck.append(cardDiv);
+        messegeModal(friendData[i]);
     }
     $("#survey_results").append(cardDeck);
+}
+
+function messegeModal(friendData){
+    console.log(friendData);
+    console.log("1");
+    let divModal = $("<div>");
+    divModal.addClass("modal fade").attr({"id":friendData.name+"Modal", "tabindex": "-1", "role":"dialog", "aria-labelledby":"exampleModalCenterTitle"});
+    console.log("2");
+    let divModalDialog = $("<div>").addClass("modal-dialog modal-dialog-centered").attr("role","document");
+    let divContent = $("<div>").addClass("modal-content");
+    let divHeader = $("<div>").addClass("modal-header");
+    console.log("2.2");
+    let modalTitle = $("<h5>").addClass("modal-title").attr("id",friendData.name+"ModalTitle").text("Message: "+friendData.name);
+    console.log("2.3");
+    let dismissButton = $("<button>").addClass("close").attr({"type":"button","data-dismiss":"modal","aria-label":"Close"});
+    console.log("2.5");
+    divHeader.append(modalTitle, dismissButton);
+    console.log("3");
+    dismissButton.append('<span aria-hidden="true">&times;</span>');
+    console.log("4");
+    let divBody = $("<div>").addClass("modal-body");
+    let form = $("<form>");
+    let divForm = $("<div>").addClass("form-group");
+    let label = $("<label>").addClass("col-form-label").attr("for","message-text").text("Message");
+    let textarea = $("<textarea>").addClass("form-control").attr("id","message-text");
+    divForm.append(label, textarea);
+    console.log("5");
+    form.append(divForm);
+    console.log("6");
+    divBody.append(form);
+    console.log("7");
+    let divFooter = $("<div>").addClass("modal-footer");
+    divFooter.append('<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>','<button type="button" class="btn btn-primary">Send Message</button>');
+    console.log("8");
+    divContent.append(divHeader, divBody, divFooter);
+    console.log("9");
+    divModalDialog.append(divContent);
+    console.log("10");
+    divModal.append(divModalDialog);
+    console.log("11");
+    $("#survey_results").append(divModal);
 }
