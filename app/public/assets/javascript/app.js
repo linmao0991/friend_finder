@@ -109,10 +109,10 @@ function showBestestFriends(friendData){
     cardDeck.addClass("card-deck");
     for (let i = 0; i < 1; i++){
         let cardDiv = $("<div>");
-        cardDiv.addClass("card border border-rounded m-2").attr({"style":"width: 18rem;"})
+        cardDiv.addClass("card border border-rounded m-2 w-20").attr({"style":"width: 18rem;"})
 
         let cardImg = $("<img>");
-        cardImg.addClass("card-img-top img-fluid rounded mx-auto d-block").attr("src",friendData[i].photo);
+        cardImg.addClass("card-img-top rounded mx-auto d-block").attr("src",friendData[i].photo);
 
         let bodyDiv = $("<div>");
         bodyDiv.addClass("card-body");
